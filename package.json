@@ -1,0 +1,58 @@
+{
+  "name": "daskeyboard-nightscout",
+  "displayName": "Nightscout Blood Sugar",
+  "version": "1.1.1",
+  "description": "Displays Blood Sugar.",
+  "longDescription": "Keep an eye on your blood sugar on Q keyboard!",
+  "officialProductName": "Nightscout",
+  "appUrl": "",
+  "isSingleton": true,
+  "videoUrl": "",
+  "icon": "assets/icon.png",
+  "image": "assets/image-missing.png",
+  "publisher": "Scott Hanselman",
+  "authorName": "Scott Hanselman",
+  "authorUrl": "https://twitter.com/shanselman",
+  "issuesUrl": "https://github.com/shanselman/DasKeyboard-Q-NightScout/issues",
+  "homePageUrl": "https://github.com/shanselman/DasKeyboard-Q-NightScout",
+  "developerRepoUrl": "https://github.com/shanselman/DasKeyboard-Q-NightScout",
+  "licenseUrl": "http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt",
+  "changelogUrl": "CHANGELOG.md",
+  "license": "MIT",
+  "readMeUrl": "README.md",
+  "readMeEndUserUrl": "README_ENDUSER.md",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "mocha"
+  },
+  "engines": {
+    "das-keyboard-q": "3.0.0"
+  },
+  "dependencies": {
+    "daskeyboard-applet": "^2.10.12",
+    "mocha": "^5.2.0",
+    "os-utils": "^0.0.14",
+    "request": "^2.88.0"
+  },
+  "qConfig": {
+    "geometry": {
+      "width": 10,
+      "height": 1,
+      "defaults": {
+        "origin": {
+          "x": 0,
+          "y": 1
+        }
+      }
+    },
+    "questions": [{
+      "key": "site",
+      "label": "Your Nightscout URL",
+      "placeholder": "https://yournightscoutsite.azurewebsites.net",
+      "required": true,
+      "order": 1,
+      "controlType": "textbox"
+    }]
+  }
+}
