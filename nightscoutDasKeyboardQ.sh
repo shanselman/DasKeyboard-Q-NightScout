@@ -40,9 +40,9 @@ do
     # important NOTE: if field "name" and "message" are empty then the signal is
     # only displayed on the devices LEDs, not in the signal center
     curl -s -S --output /dev/null -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-        "name": "Set zone '$i'",
+        "name": "Nightscout",
         "id": "'$i'",
-        "message": "Message sent by script '$0'",
+        "message": "Blood sugar is '$bgvalue'",
         "pid": "'$PID'",
         "zoneId": "'"$i"'",
         "color": "'$COLOR'",
