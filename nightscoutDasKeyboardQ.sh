@@ -16,14 +16,19 @@ MAX_ZONE_ID=166
 red=#f00
 green=#0f0
 yellow=#ff0
-COLOR=$green
+#deep orange is LOW sugar
+COLOR=#f50 
 bgvalue=$(curl -s  https://hanselsugars.azurewebsites.net/api/v1/entries.txt?count=1 | grep -Eo '000\s([0-9]{1,3})+\s' | cut -f 2)
-if [ $bgvalue -gt 130 ]
-then
-    COLOR=$yellow
-    if [ $bgvalue -gt 200 ]
+if [ $bgvalue -gt 80 ]
+then 
+    COLOR=$green
+    if [ $bgvalue -gt 140 ]
     then
-        COLOR=$red
+        COLOR=$yellow
+        if [ $bgvalue -gt 200 ]
+        then
+            COLOR=$red
+        fi
     fi
 fi
 
@@ -34,7 +39,7 @@ do
     #echo "Sending signal to zoneId: $i"
     # important NOTE: if field "name" and "message" are empty then the signal is
     # only displayed on the devices LEDs, not in the signal center
-    curl -s -o nul -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
+    curl -s -S --output /dev/null -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
         "name": "Set zone '$i'",
         "id": "'$i'",
         "message": "Message sent by script '$0'",
